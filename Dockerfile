@@ -23,5 +23,9 @@ RUN chmod ugo+x ./entrypoint.sh
 EXPOSE 1389
 EXPOSE 1636
 
+RUN apk update
+RUN apk add openldap openldap-clients openldap-back-mdb
+RUN addgroup -g 11000 appusergrp && adduser -u 11001 -g appusergrp -D appuser
+USER 11001
 # Run the server
 ENTRYPOINT ["./entrypoint.sh"]

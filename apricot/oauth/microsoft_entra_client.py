@@ -96,7 +96,7 @@ class MicrosoftEntraClient(OAuthClient):
                 "userPrincipalName",
             ]
             user_data = self.query(
-                f"https://graph.microsoft.com/v1.0/users?$select={','.join(queries)}",
+                f"https://graph.microsoft.com/v1.0/users?$select={','.join(queries)}&$top=102",
             )
             for user_dict in cast(
                 "list[JSONDict]",
