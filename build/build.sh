@@ -1,5 +1,2 @@
-
 #!/bin/sh
-
-# Build inside docker container
-docker build -t ${DOCKER_SERVICE} .
+docker build -t ${DOCKER_SERVICE} -f Dockerfile
