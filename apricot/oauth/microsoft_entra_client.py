@@ -53,7 +53,6 @@ class MicrosoftEntraClient(OAuthClient):
         ]
         group_data: list[JSONDict] = []
         max_rows = 999
-<<<<<<< HEAD
         current_query: str = (
             f"https://graph.microsoft.com/v1.0/groups?$select={','.join(queries)}&$top={max_rows}"
         )
@@ -62,13 +61,6 @@ class MicrosoftEntraClient(OAuthClient):
                 "Retrieved group response object: {response}",
                 response=response_data,
             )
-=======
-        current_query: str = f"https://graph.microsoft.com/v1.0/groups?$select={','.join(queries)}&$top={max_rows}"
-        while response_data := self.query(
-            current_query,
-        ):
-            self.logger.debug("Retrieved group response object: {response}", response=response_data,)
->>>>>>> 478d24c (Larger retrievals and merge several retrievals if more data exist)
             group_data.extend(cast("list[JSONDict]", response_data["value"]))
             if "@odata.nextLink" in response_data:
                 current_query = response_data["@odata.nextLink"]
